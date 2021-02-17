@@ -1,0 +1,53 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click="handleClick">Clique Aqui</button>
+        {{contador}}
+        <button @click="ativo = !ativo">Toggle</button>
+        {{ativo}}
+        <p v-if="ativo">Mostrar Texto</p>
+
+        <a href="#interno" @click.prevent.once="handleClick">Não aparecer a # no link</a>
+
+        <input type="text" @keyup="handleClick">
+        <p @mousemove="handleMove">posição do mouse x {{mouse.x}}</p>
+    </div>
+    <!-- 
+
+        v-on é uma diretiva que permite observarmos eventos nas tags
+        v-on = @
+
+        MODIFICADORES: .once: só executa uma vez; .prevent: faz o prevent default
+        no keyup: .f: só vai ativar o keyup quando F for apertado 
+    -->
+    <script>
+        const vm = new Vue({
+            el: " #app",
+            data: {
+                contador: 0,
+                ativo: true,
+                mouse: "",
+            },
+            methods: {
+                handleClick(event) {
+                    console.log(event)
+                    // console.log(event.key) mostar a tecla que esta sendo apertada
+                },
+                handleMove(event){
+                    this.mouse = event;
+                }
+            },
+        }) 
+    </script>
+</body>
+
+</html>

@@ -1,2 +1,2 @@
-# Vue.js_Origamid
-Conteúdo do Curso Completo de Vue.js por André Rafael - ORIGAMID
+Sempre para rodar: ter instalado a extensão Live Server e iniciar no botão 'go live' 
+renomear o arquivo para index.html para rodar

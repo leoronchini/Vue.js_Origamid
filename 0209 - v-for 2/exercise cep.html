@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="puxarCep">Puxar CEp</button>
+        <div>{{local}}</div>
+        <ul>
+            <li v-for="dado, key in local">
+                {{key}}: {{dado}}
+            </li>
+        </ul>
+    </div>
+    <!-- 
+    Conteudo aula v-for 2
+    https://viacep.com.br/ws/04538133/json
+    -->
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                local: {
+
+                }
+            },
+            methods: {
+                puxarCep() {
+                    fetch("https://viacep.com.br/ws/04538133/json")
+                        .then(r => r.json())
+                        .then(r => {
+                            this.local = r
+                        })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

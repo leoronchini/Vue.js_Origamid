@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="({nome, populacao}, key) in estados" :key="key">
+                {{nome}}
+                {{populacao}}
+            </li>
+            <li v-for="item in lista">{{item}}</li>
+            <div v-for="n in 10">
+                .
+            </div>
+            <button @click="removerItem">Remover</button>
+            <button @click="modificarItem">Modificar</button>
+        </ul>
+    </div>
+    <!-- v-for: Renderiza uma lista de itens. Assim como o for loop, ele irá executar para cada item de array/objeto 
+    :key : Cria uma identificação unica para o item. Sem o Key, bugs podem ocorrer principalmente em componentes mais complexos
+    Conteudo aula v-for 1
+    -->
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                estados: {
+                    sp: {
+                        populacao: "45 milhoes",
+                        nome: "São Paulo"
+                    },
+                    mg: {
+                        populacao: "21 milhoes",
+                        nome: "Minas Gerais"
+                    },
+                    rj: {
+                        populacao: "17 milhoes",
+                        nome: "Rio de Janeiro"
+                    }
+                },
+                lista: ["Item 1", "Item 2", "Item 3"]
+            },
+            methods: {
+                removerItem() {
+                    this.lista.pop();
+                },
+                modificarItem() {
+                    this.$set(this.lista, 0, "Banana")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
