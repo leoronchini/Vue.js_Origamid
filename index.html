@@ -10,33 +10,25 @@
 
 <body>
     <div id="app">
-        <button @click="puxarCep">Puxar CEp</button>
-        <div>{{local}}</div>
-        <ul>
-            <li v-for="dado, key in local">
-                {{key}}: {{dado}}
-            </li>
-        </ul>
+        <h1>{{total}}</h1>
     </div>
-    <!-- 
-    Conteudo aula v-for 2
-    https://viacep.com.br/ws/04538133/json
-
-    <!-- PAREI EM 6:41 V-FOR 2 -->
-    -->
     <script>
+        //Computed: Quando precisamos modificar um dado usando JS podemos utilizar uma propriedade dentro de computed
         const vm = new Vue({
             el: "#app",
             data: {
-  
+                preco: 59,
+                desconto: 10
             },
-            methods:{
-                puxarAula(){
-                    fetch("./cursos")
+            computed: {
+                total() {
+                    return this.preco - this.desconto;
                 }
+                // aula 0209 em 3:37
             }
         })
     </script>
 </body>
+
 
 </html>
