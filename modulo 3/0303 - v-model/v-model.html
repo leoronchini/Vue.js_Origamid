@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input v-model.lazy="nome" placeholder="nome"> <br>
+            <input v-model.trim="email" placeholder="email"> <br>
+            <input v-model.number="cep" placeholder="cep"> <br>
+
+        </div>
+
+        <div>
+            <input type="checkbox" id="receberEmail" v-model="receberEmail">
+            <label for="receberEmail">Receber Email</label>
+            <input type="radio" name="azul" id="azul" v-model="cor" value="Azul">
+            <label for="azul">Azul</label>
+            <input type="radio" name="vermelho" id="vermelho" v-model="cor" value="Vermelho">
+            <label for="vermelho">Vermelho</label>
+            <input type="radio" name="verde" id="verde" v-model="cor" value="Verde">
+            <label for="verde">Verde</label> <br> <br>
+        </div>
+        <div>
+            <select v-model="fruta">
+                <option disabled value="">Selecione uma fruta</option>
+                <option value="Banana">Banana</option>
+                <option value="Morango">Morango</option>
+                <option value="Uva">Uva</option>
+            </select> <br> <br>
+        </div>
+        <div>
+            <textarea v-model="mensagem"></textarea> <br>
+        </div>
+        <p> Nome:{{nome}} </p>
+        <p> Email:{{email}} </p>
+        <p> CEP:{{cep}} </p>
+        <p> receber email?: {{receberEmail}} </p>
+        <p> Mensagem: {{mensagem}} </p>
+        <p> ReceberEmail: {{receberEmail}} </p>
+        <p> Cor: {{cor}}</p>
+        <p> Fruta: {{fruta}}</p>
+    </div>
+    <script>
+        // v-model é utilizado para tornar reativo o conteudo de formularios. Chamado de two-way data binding.
+        // one-way: apenas passa do javascript pro DOM e não faz o caminho contrario como o two-way
+        // one-way: :value. two-way: v-model
+
+        // modificadores: 
+        // .lazy: só mostra o valor apos sair da seleção o campo.
+        // .number: transforma a string retornada do campo em numero e ignora caracteres
+        // .trim: tira os espaços do inicio e fim do valor digitado
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "",
+                email: "",
+                cep: "",
+                mensagem: "",
+                receberEmail: "",
+                cor: "",
+                fruta: "",
+            }
+        });
+    </script>
+</body>
+
+
+</html>

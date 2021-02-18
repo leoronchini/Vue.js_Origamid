@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form action="">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" v-model="nome">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" v-model="email">
+            <label for="telefone">Telefone</label>
+            <input type="text" name="telefone" id="telefone" v-model="telefone">
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" v-model="mensagem"></textarea>
+            <br>
+            <input @click.prevent="enviarFormulario" type="submit">
+        </form>
+        <div>
+            <ul>
+                <li v-for="(valor, chave) in resultado">
+                    {{chave}}: {{valor}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+
+
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                nome: "",
+                email: "",
+                telefone: "",
+                mensagem: "",
+                resultado: {}
+
+            },
+            methods: {
+                enviarFormulario() {
+                    this.resultado = {
+                        nome: this.nome,
+                        email: this.email,
+                        telefone: this.telefone,
+                        mensagem: this.mensagem,
+                    }
+                }
+            }
+        });
+    </script>
+
+    <style>
+        label,
+        a {
+            display: block;
+        }
+
+        a {
+            margin-top: 100px;
+        }
+    </style>
+</body>
+
+
+</html>

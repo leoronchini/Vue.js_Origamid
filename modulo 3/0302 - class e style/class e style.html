@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p :class="[cor, {ativo: estaAtivo}]">Texto Azul</p>
+        <p :class="{ativo: estaAtivo, verde: elementoVerde}">Mostrar Texto</p>
+        <button @click="estaAtivo = !estaAtivo">Click</button>
+
+        <a :style="{background: bgColor, fontSize: tamanho + ' '}">Estilize ele</a>
+        <button @click="tamanho++">Aumentar</button>
+
+        <p :style="estiloBotao">Novo Texto</p>
+        <p :style="estiloParagrafo">Novo Paragrafo</p>
+
+        {{estiloParagrafo}}
+    </div>
+    <script>
+        //class: Manipulação de classes é comum quando desejamos criar efeitos com JS. 
+        // Por isso o Vue trata a diretiva v-bind:class ou :class de forma diferente.
+        // Podemos passar objetos no :class, a propriedade que tiver valor true será adicionada como classe. Arrays podem ser utilizadas.
+
+        //style: É possivel passar um objeto com os estilos, quase como fazemos com css direto.
+        // Utilizar camelCase, exemplo: ao invés de font-size utilize fontSize, para usar font-size tem que ser entre aspas
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                cor: "azul",
+                background: "vermelho",
+                estaAtivo: true,
+                elementoVerde: false,
+                bgColor: "blue",
+                tamanho: 20,
+                estiloBotao: {
+                    background: "tomato",
+                    fontSize: "20px",
+                    color: "#fff"
+                }
+            },
+            computed: {
+                estiloParagrafo() {
+                    const tamanho = Math.random() * 100;
+                    return {
+                        fontSize: tamanho + 'px',
+                    }
+
+                }
+            }
+        });
+    </script>
+    <style>
+        .vermelho {
+            background: red;
+        }
+
+        .azul {
+            color: blue;
+        }
+
+        .verde {
+            color: green;
+        }
+
+        .ativo {
+            background-color: red;
+        }
+    </style>
+</body>
+
+
+</html>

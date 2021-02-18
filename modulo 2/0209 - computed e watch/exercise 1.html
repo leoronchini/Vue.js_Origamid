@@ -10,26 +10,23 @@
 
 <body>
     <div id="app">
+        {{nomeCompleto}}
     </div>
     <script>
+        //Watch assincrono: É possivel ativar uma função toda vez que um dado reativo é modificado
         const vm = new Vue({
             el: "#app",
             data: {
+                nome: "Leonardo",
+                sobrenome: "Ronchini"
             },
+            computed: {
+                nomeCompleto() {
+                    return this.nome + " " + this.sobrenome;
+                }
+            }
         });
     </script>
-
-    <style>
-        label,
-        a {
-            display: block;
-        }
-
-        a {
-            margin-top: 100px;
-        }
-    </style>
 </body>
-
 
 </html>

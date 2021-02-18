@@ -10,25 +10,23 @@
 
 <body>
     <div id="app">
+        <p>{{contador}}</p>
+        <button @click="contador++">Adicionar</button>
     </div>
     <script>
+        //Watch: É possivel ativar uma função toda vez que um dado reativo é modificado
         const vm = new Vue({
             el: "#app",
             data: {
+                contador: 0
             },
+            watch: {
+                contador(valorNovo, valorAntigo) {
+
+                }
+            }
         });
     </script>
-
-    <style>
-        label,
-        a {
-            display: block;
-        }
-
-        a {
-            margin-top: 100px;
-        }
-    </style>
 </body>
 
 

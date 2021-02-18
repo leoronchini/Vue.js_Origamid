@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="puxarPaises">Puxar Paises</button>
+        <select name="paises" id="paises" v-model="paisSelecionado">
+            <option v-for="pais in paises" :value="pais.name"> {{pais.name}}</option>
+        </select>
+        <p>{{capital.capital}}</p>
+    </div>
+    <script>
+        //Watch assincrono: É possivel ativar uma função toda vez que um dado reativo é modificado
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                paisSelecionado: "",
+                capital: "",
+                paises: {},
+            },
+            methods: {
+                puxarPaises() {
+                    fetch("https://restcountries.eu/rest/v2/all")
+                        .then(r => r.json())
+                        .then(r => {
+                            this.paises = r;
+                        })
+                }
+            },
+            watch:{
+                paisSelecionado(valor){
+                    this.capital = this.paises.find((pais) => pais.name === valor)
+                    // é usando FIND pois só tem um pais com cada nome, se tivesse mais de um usava FILTER
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

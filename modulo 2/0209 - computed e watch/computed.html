@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <script src="/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="carro in carros">
+                {{carro.marca}}
+            </li>
+            {{carrosAzuis}}
+        </ul>
+    </div>
+    <script>
+        //Computed: Quando precisamos modificar um dado usando JS podemos utilizar uma propriedade dentro de computed
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                carros: [
+                    {
+                        marca: "VW",
+                        cor: "Azul"
+                    },
+                    {
+                        marca: "Ford",
+                        cor: "Preto"
+                    },
+                    {
+                        marca: "Tesla",
+                        cor: "Azul"
+                    }
+                ]
+            },
+            computed: {
+                carrosAzuis() {
+                    const filtro = this.carros.filter(({cor}) => cor === "Azul");
+                    return filtro
+                }
+
+            }
+        })
+    </script>
+</body>
+
+
+</html>
