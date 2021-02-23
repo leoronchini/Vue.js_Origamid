@@ -10,58 +10,15 @@
 
 <body>
     <div id="app">
-        <p>{{mensagem}}</p>
-        <div>{{github}}</div>
     </div>
     <script>
         const vm = new Vue({
             el: "#app",
-            
+
             data: {
-                mensagem: "Essa é uma mensagem",
-                github: "",
-                contador: 0,
-            },
-            methods: {
-                puxarGithub() {
-                    fetch("https://api.github.com/users/origamid")
-                        .then(r => r.json())
-                        .then(r => {
-                            this.github = r;
-                        })
-                }
-            },
-            beforeCreate() {
-                console.log(this.mensagem);
-            },
-            created() {
-                console.log(this.mensagem);
-                this.puxarGithub();
-            },
-            beforeMount() {
-                console.log(this.$el);
-                // Template ainda não renderizado
-            },
-            mounted() {
-                console.log(this.$el);
-                // Template renderizado
-            },
-            beforeUpdate() {
-                console.log(this.contador);
-            },
-            updated() {
-                console.log(this.contador);
-            },
-            destruir() {
-                this.$destroy();
+
             },
 
-            beforeDestroy() {
-                console.log("Vai destruir");
-            },
-            destroyed() {
-                console.log("Destruiu");
-            }
         });
 
 
